@@ -1,0 +1,27 @@
+- name: Installation
+  hosts: all
+
+  pre_tasks:
+  - shell: echo 'Installation roles'
+  
+  roles:
+  - java
+  - tomcat
+  - nginx
+
+  post_tasks:
+  - shell: echo 'Installation roles - done'
+
+- name: Verification
+  hosts: all
+
+  pre_tasks:
+  - shell: echo 'Verification roles'
+  
+  roles:
+  - java_test
+  - tomcat_test
+  - nginx_test
+
+  post_tasks:
+  - shell: echo 'Verification roles - done'

@@ -1,0 +1,10 @@
+- name: Checks that java installed and running properly
+  command: java -version
+  register: command_result
+  changed_when: False
+  failed_when: "'openjdk version' not in command_result.stderr"
+
+- name: Sucsesfull instalation java
+  debug:
+    msg: "Java installed and running properly: {{command_result.stderr.split('\n')[1]}}"
+

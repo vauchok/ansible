@@ -1,0 +1,9 @@
+- name: Checks that tomcat installed and running properly
+  command: systemctl status tomcat
+  register: command_result
+  changed_when: False
+  failed_when: "'active (running)' not in command_result.stdout"
+
+- name: Sucsesfull instalation 
+  debug:
+    msg: "tomcat installed and running properly: {{command_result.stdout.split('\n')[2]}}"
